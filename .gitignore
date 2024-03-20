@@ -1,0 +1,27 @@
+# created by virtualenv automatically
+# Ignore database file
+*.sqlite3
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore migration files
+/migrations/
+
+# Ignore virtual environment
+/venv/
+
+# Ignore IDE/editor specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore local configuration files
+settings_local.py
+local_settings.py
+
+# Ignore compiled assets
+*.css
+*.js
+
