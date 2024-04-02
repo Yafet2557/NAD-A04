@@ -84,7 +84,7 @@
       {% else %}
       <div class="mt-2 mb-2">No photos to show</div>
       {% endif %}
-
+      
       <a href="{% url 'posts:main-board'%}" id="back-btn" class="btn btn-info">back</a>
       <button id="update-btn" class="btn btn-primary not-visible" data-bs-toggle="modal" data-bs-target="#updateModal">update</button>
       <button id="delete-btn" class="btn btn-danger not-visible" data-bs-toggle="modal" data-bs-target="#deleteModal">delete</button>
@@ -93,4 +93,16 @@
       </div>
       <div class="mt-1" id="post-box"></div>
    </div>
+   <hr>
+   <div class="mt-4 d-flex justify-content-between align-items-center">
+      {% if request.user.is_authenticated %}
+         <div>
+            <img src="{{ request.user.profile.avatar.url }}" alt="Avatar" class="rounded-circle" style="width: 50px; height: 50px;">
+            <span class="ms-2">{{ request.user.username }}</span>
+         </div>
+      {% else %}
+         <div>Guest User</div>
+      {% endif %}
+   </div>
+</div>
 {% endblock %}

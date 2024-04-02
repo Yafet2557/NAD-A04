@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 from django.http import HttpResponse, JsonResponse
 from .forms import PostForm
@@ -35,8 +35,6 @@ def post_list_and_create(request):
 def post_detail(request, pk):
     obj = Post.objects.get(pk=pk)
     form = PostForm()
-    
-    
     context = {
         'obj': obj,
         'form': form,
@@ -65,6 +63,8 @@ def  load_posts_data_view(request, num_posts):
             }
             data.append(item)
         return JsonResponse({'data':data[lower:upper], 'size':size})
+    return redirect('posts:main-board')
+    
 
 @login_required
 def post_detail_data_view(request, pk):
@@ -91,6 +91,7 @@ def like_unlike_post(request):
             liked = True
             obj.liked.add(request.user)
         return JsonResponse({'liked': liked, 'count': obj.like_count})
+    return redirect('posts:main-board')
     
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
@@ -108,6 +109,8 @@ def update_post(request, pk):
             'title':new_title,
             'body':new_body
         })
+    return redirect('posts:main-board')
+    
 
 @action_permission
 def delete_post(request, pk):

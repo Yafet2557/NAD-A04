@@ -24,5 +24,4 @@ urlpatterns = [
     path('<pk>/delete/', delete_post, name="post-delete"),
     path('<pk>/update/', update_post, name="post-update"),
 
-
 ]
